@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from bookings.models import Resource
+
+def index(request):
+    count = Resource.objects.count()
+    return render(request, 'index.html', {'resource_count': count})
 
 def home(request):
     data = {

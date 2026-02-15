@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -14,6 +15,12 @@
     </header>
 
     <main>
+            <!-- JavaScript -->
+        <script src="{% static 'js/main.js' %}" defer></script>
+           <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+            <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'static/static.css' %}">
         {% block content %}
         {% endblock %}
     </main>

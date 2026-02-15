@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to the Home Page</h1>
+    <p>This is the main content of the home page.</p>
+    <p>У нас доступно объектов для бронирования: {{ resource_count }}</p>
+    <img src="{% static 'images/home_image.jpg' %}" alt="Home Image">
+</div>
+{% endblock %}
