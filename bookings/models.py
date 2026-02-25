@@ -1,10 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Resource(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     description = models.TextField(blank=True, verbose_name="Описание")
     capacity = models.IntegerField(default=1, verbose_name="Вместимость")
+
+    def is_currently_free(self):
+        # Проверяем, есть ли хоть одно активное бронирование прямо сейчас
+        now = timezone.now()
+        active_booking = self.bookings.filter(start_time__lte=now, end_time__gte=now).exists()
+        return not active_booking
 
     def __str__(self):
         return self.name

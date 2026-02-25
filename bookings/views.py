@@ -15,7 +15,7 @@ class BookingViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        # Автоматически сохраняем текущего пользователя как автора брони
+        # Это магия: берем пользователя из request и передаем в метод save
         serializer.save(user=self.request.user)
 
     def get_queryset(self):

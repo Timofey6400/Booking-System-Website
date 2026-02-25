@@ -8,6 +8,9 @@ class ResourceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class BookingSerializer(serializers.ModelSerializer):
+    # Делаем поле пользователя только для чтения
+    user = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = Booking
         fields = ['id', 'resource', 'user', 'start_time', 'end_time']

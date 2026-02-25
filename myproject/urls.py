@@ -24,4 +24,5 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('api/', include('bookings.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('', include('main.urls')),
 ]
