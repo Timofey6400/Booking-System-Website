@@ -21,7 +21,7 @@ def home(request):
         user_bookings = Booking.objects.filter(user=request.user).order_by('-start_time')
     
     data = {
-        'title': 'Система бронирования',
+        'title': 'Welcome to the Resource Booking System',
         'resources': resources,
         'my_bookings': user_bookings, 
     }
@@ -33,7 +33,7 @@ def cancel_booking(request, booking_id):
     if request.method == 'POST':
         resource_name = booking.resource.name
         booking.delete()
-        messages.success(request, f'Бронирование ресурса "{resource_name}" успешно отменено!')
+        messages.success(request, f'Booking of resource "{resource_name}" has been canceled successfully!')
         return redirect('home')
     
     return redirect('home')

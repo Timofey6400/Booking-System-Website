@@ -34,16 +34,16 @@
         <div class="col-12">
             <div class="card border-primary shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Мои активные бронирования</h5>
+                    <h5 class="mb-0">My Active Bookings</h5>
                 </div>
                     <div class="card-body p-0">
                         <table class="table table-hover mb-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Ресурс</th>
-                                        <th>Начало</th>
-                                        <th>Конец</th>
-                                        <th>Действие</th> </tr>
+                                        <th>Resource</th>
+                                        <th>Start</th>
+                                        <th>End</th>
+                                        <th>Action</th> </tr>
                                 </thead>
                                 <tbody>
                                     {% for booking in my_bookings %}
@@ -55,15 +55,15 @@
                                             <form action="{% url 'cancel_booking' booking.id %}" method="POST" style="display:inline;">
                                                 {% csrf_token %}
                                                 <button type="submit" class="btn btn-sm btn-outline-danger" 
-                                                        onclick="return confirm('Вы уверены, что хотите отменить бронь?')">
-                                                    Отменить
+                                                        onclick="return confirm('Are you sure you want to cancel the booking?');">
+                                                    Cancel
                                                 </button>
                                             </form>
                                         </td>
                                     </tr>
                                     {% empty %}
                             <tr>
-                                <td colspan="5" class="text-center py-3 text-muted">У вас пока нет активных бронирований.</td>
+                                <td colspan="5" style="cursor: pointer" class="text-center py-3 text-muted">You don't have any active bookings yet.</td>
                             </tr>
                                     {% endfor %}
                                 </tbody>
@@ -73,7 +73,7 @@
             </div>
         </div>
             {% endif %}
-        <p class="lead text-muted">Всего доступно объектов: <span class="badge bg-primary">{{ resources.count }}</span></p>
+        <p class="lead text-muted">Total available objects: <span class="badge bg-primary">{{ resources.count }}</span></p>
     </div>
 </div>
 
@@ -85,25 +85,25 @@
                     <h5 class="card-title d-flex justify-content-between align-items-center">
                         {{ item.name }}
                         {% if item.is_currently_free %}
-                            <span class="badge rounded-pill bg-success" style="font-size: 0.7rem;">Свободно</span>
+                            <span class="badge rounded-pill bg-success" style="font-size: 0.7rem;">Available</span>
                         {% else %}
-                            <span class="badge rounded-pill bg-danger" style="font-size: 0.7rem;">Занято</span>
+                            <span class="badge rounded-pill bg-danger" style="font-size: 0.7rem;">Occupied</span>
                         {% endif %}
                     </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Вместимость: {{ item.capacity }} чел.</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Capacity: {{ item.capacity }} people.</h6>
                     <p class="card-text">{{ item.description|truncatewords:20 }}</p>
                 </div>
                 <div class="card-footer bg-white border-top-0">
                     <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#bookingModal">
-Забронировать
+                        Book Now
                     </button>
                 </div>
             </div>
         </div>
         {% empty %}
         <div class="col-12 text-center py-5">
-            <p class="text-muted">Ресурсов пока нет. Создайте первый!</p>
-            <a href="/api/resources/" class="btn btn-primary">Создать ресурс через API</a>
+            <p class="text-muted">No resources available yet. Create the first one!</p>
+            <a href="/api/resources/" class="btn btn-primary">Create Resource via API</a>
         </div>
         {% endfor %}
     </div>
@@ -113,8 +113,8 @@
     <div class="row justify-content-center pb-5">
         <div class="col-md-6 text-center">
             <div class="btn-group shadow-sm">
-                <a href="/api/resources/" class="btn btn-secondary">Управление ресурсами</a>
-                <a href="/api/bookings/" class="btn btn-dark">Все бронирования</a>
+                <a href="/api/resources/" class="btn btn-secondary">Manage Resources</a>
+                <a href="/api/bookings/" class="btn btn-dark">View All Bookings</a>
             </div>
         </div>
     </div>
@@ -123,14 +123,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Новое бронирование</h5>
+        <h5 class="modal-title">New Booking</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/api/bookings/" method="POST">
           {% csrf_token %}
           <div class="mb-3">
-            <label class="form-label">Ресурс</label>
+            <label class="form-label">Resource</label>
             <select name="resource" class="form-select" id="resourceSelect">
                 {% for r in resources %}
                 <option value="{{ r.id }}">{{ r.name }}</option>
@@ -138,14 +138,14 @@
             </select>
           </div>
           <div class="mb-3">
-            <label class="form-label">Начало (ГГГГ-ММ-ДД ЧЧ:ММ)</label>
+            <label class="form-label">Start Time (YYYY-MM-DD HH:MM)</label>
             <input type="datetime-local" name="start_time" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Конец (ГГГГ-ММ-ДД ЧЧ:ММ)</label>
+            <label class="form-label">End Time (YYYY-MM-DD HH:MM)</label>
             <input type="datetime-local" name="end_time" class="form-control" required>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Подтвердить бронь</button>
+          <button type="submit" class="btn btn-primary w-100">Confirm Booking</button>
         </form>
       </div>
     </div>
