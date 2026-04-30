@@ -22,34 +22,34 @@
    ```bash
    git clone [https://github.com/Timofey6400/Booking-System-Website.git](https://github.com/Timofey6400/Booking-System-Website.git)
    cd Booking-System-Website
-Install dependencies:
-It is recommended to use a virtual environment.
+   
+2. **Install dependencies:**
+   It is recommended to use a virtual environment.
+   ```bash
+   pip install -r requirements.txt
+   
+3. **Apply migrations:**
+   Prepare the local database.
+   ```bash
+   python manage.py migrate
+   
+4. **Run the server:**
+   ```bash
+   python manage.py runserver
+Open ```http://127.0.0.1:8000/``` in your web browser.
 
-Bash
-pip install -r requirements.txt
-Apply migrations:
-Prepare the local database.
+### 📂 Project Structure
+**bookings/ — Logic for managing reservations and resource states.**
 
-Bash
-python manage.py migrate
-Run the server:
+**main/ — General app handling the landing page and core site logic.**
 
-Bash
-python manage.py runserver
-Open http://127.0.0.1:8000/ in your web browser.
+**myproject/ — Django configuration files (settings, URLs).**
 
-📂 Project Structure
-bookings/ — Logic for managing reservations and resource states.
+**js/ — Client-side scripts for dynamic front-end behavior.**
 
-main/ — General app handling the landing page and core site logic.
+### 🛠 Tech Stack
+**Backend: Python 3.x, Django**
 
-myproject/ — Django configuration files (settings, URLs).
+**Frontend: HTML5, CSS3**
 
-js/ — Client-side scripts for dynamic front-end behavior.
-
-🛠 Tech Stack
-Backend: Python 3.x, Django
-
-Frontend: HTML5, CSS3, JavaScript
-
-Database: SQLite3 (default)
+**Database: SQLite3 (default)**
