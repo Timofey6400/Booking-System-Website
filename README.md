@@ -39,13 +39,13 @@
 Open ```http://127.0.0.1:8000/``` in your web browser.
 
 ### 📂 Project Structure
-**bookings/ — Logic for managing reservations and resource states.**
+**bookings/ - Logic for managing reservations and resource states.**
 
-**main/ — General app handling the landing page and core site logic.**
+**main/ - General app handling the landing page and core site logic.**
 
-**myproject/ — Django configuration files (settings, URLs).**
+**myproject/ - Django configuration files (settings, URLs).**
 
-**js/ — Client-side scripts for dynamic front-end behavior.**
+**js/ - Client-side scripts for dynamic front-end behavior.**
 
 ### 🛠 Tech Stack
 **Backend: Python 3.x, Django**
